@@ -8,6 +8,7 @@ export function DateTile({ date, color, big }) {
     </div>
   );
 }
+
 export const StatusPill = ({ status }) => <span className={`pill ${status}`}>{status}</span>;
 export const TypeTag = ({ meta }) => meta ? <span className="tag"><i style={{ background: meta.color }} />{meta.label}</span> : null;
 export const Empty = ({ title, children }) => <div className="empty"><h3>{title}</h3><p>{children}</p></div>;
