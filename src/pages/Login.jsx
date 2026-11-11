@@ -139,7 +139,7 @@ export default function Login() {
               required
               value={f.email}
               onChange={set('email')}
-              placeholder={userType === 'student' && !isRegister ? '22A91A0501 or student@aditya.edu' : 'name@aditya.edu'}
+              placeholder={userType === 'student' && !isRegister ? 'Enter rollnumber or email id' : 'name@aditya.edu'}
             />
           </label>
 
@@ -181,43 +181,6 @@ export default function Login() {
               ? 'Already registered? Log in here'
               : (userType === 'student' ? 'New student? Register your account' : 'New faculty? Create an account')}
           </button>
-
-          {/* Demo account quick buttons */}
-          <div className="demo" style={{ marginTop: '1rem' }}>
-            <small>Quick Demo Accounts (password: <code>password123</code> or <code>Aditya@123</code>)</small>
-            <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
-              <button
-                type="button"
-                onClick={() => { setUserType('student'); setIsRegister(false); setF({ ...f, email: '23MH1A0563', password: 'password123' }); }}
-              >
-                🎓 Student (23MH1A0563)
-              </button>
-              <button
-                type="button"
-                onClick={() => { setUserType('student'); setIsRegister(false); setF({ ...f, email: '22A91A0501', password: 'password123' }); }}
-              >
-                🎓 Student (22A91A0501)
-              </button>
-              <button
-                type="button"
-                onClick={() => { setUserType('faculty'); setIsRegister(false); setF({ ...f, email: 'faculty@aditya.edu', password: 'password123' }); }}
-              >
-                👨‍🏫 Faculty
-              </button>
-              <button
-                type="button"
-                onClick={() => { setUserType('faculty'); setIsRegister(false); setF({ ...f, email: 'hod@aditya.edu', password: 'password123' }); }}
-              >
-                🏛️ HOD
-              </button>
-              <button
-                type="button"
-                onClick={() => { setUserType('faculty'); setIsRegister(false); setF({ ...f, email: 'admin@aditya.edu', password: 'password123' }); }}
-              >
-                ⚡ Admin
-              </button>
-            </div>
-          </div>
         </form>
       </section>
     </div>
