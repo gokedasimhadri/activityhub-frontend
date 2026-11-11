@@ -98,18 +98,37 @@ export default function StudentActivities() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', flexWrap: 'wrap' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem', flexWrap: 'wrap' }}>
-                      <span
-                        style={{
-                          backgroundColor: `${color}18`,
-                          color: color,
-                          fontSize: '12px',
-                          fontWeight: 600,
-                          padding: '2px 8px',
-                          borderRadius: '4px'
-                        }}
-                      >
-                        {a.typeInfo?.label || a.activityType || a.type}
-                      </span>
+                      {a.approvalNumber && (
+                        <span
+                          style={{
+                            backgroundColor: '#f0fdf4',
+                            color: '#166534',
+                            border: '1px solid #86efac',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            padding: '2px 7px',
+                            borderRadius: '4px',
+                            fontFamily: 'monospace'
+                          }}
+                        >
+                          {a.approvalNumber}
+                        </span>
+                      )}
+                      {a.fee && (
+                        <span
+                          style={{
+                            backgroundColor: a.fee.hasFee ? '#fffbeb' : '#ecfdf5',
+                            color: a.fee.hasFee ? '#b45309' : '#047857',
+                            border: `1px solid ${a.fee.hasFee ? '#fde68a' : '#a7f3d0'}`,
+                            fontSize: '11.5px',
+                            fontWeight: 700,
+                            padding: '2px 8px',
+                            borderRadius: '4px'
+                          }}
+                        >
+                          {a.fee.hasFee ? `₹${a.fee.amount}` : 'Free'}
+                        </span>
+                      )}
                       <span className="muted" style={{ fontSize: '13px' }}>
                         · {a.department} · {a.academicYear}
                       </span>
@@ -154,12 +173,6 @@ export default function StudentActivities() {
                   </div>
                 </div>
 
-                {a.description && (
-                  <p style={{ margin: 0, color: '#475569', fontSize: '0.92rem', lineHeight: 1.5 }}>
-                    {a.description}
-                  </p>
-                )}
-
                 <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#64748b', borderTop: '1px solid #f1f5f9', paddingTop: '0.75rem', marginTop: '0.25rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                     <Calendar size={15} style={{ color: '#94a3b8' }} />
@@ -167,7 +180,7 @@ export default function StudentActivities() {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                     <MapPin size={15} style={{ color: '#94a3b8' }} />
-                    <span>{a.department} Department</span>
+                    <span>{a.venue || `${a.department} Department`}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                     <Clock size={15} style={{ color: '#94a3b8' }} />
